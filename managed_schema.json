@@ -1,0 +1,55 @@
+{
+  "type": "object",
+  "properties": {
+    "orgNames": {
+      "title": "Organization names",
+      "description": "Names attackers might use to impersonate you, e.g. [\"Acme\", \"Acme Corp\"].",
+      "type": "array", "items": { "type": "string" }
+    },
+    "orgDomains": {
+      "title": "Organization email/web domains",
+      "description": "Your real domains, e.g. [\"acme.com\"]. Mail from these is trusted; look-alikes are flagged.",
+      "type": "array", "items": { "type": "string" }
+    },
+    "trustedDomains": {
+      "title": "Trusted partner domains",
+      "type": "array", "items": { "type": "string" }
+    },
+    "trustedLoginHosts": {
+      "title": "Trusted sign-in pages",
+      "description": "Your SSO or portal hosts, e.g. [\"acme.okta.com\"].",
+      "type": "array", "items": { "type": "string" }
+    },
+    "reportEmail": {
+      "title": "Report address",
+      "description": "Where 'Report to IT' sends reports.",
+      "type": "string"
+    },
+    "reportWebhook": {
+      "title": "Optional report webhook",
+      "description": "HTTPS URL that receives a JSON copy of each report (e.g. a ticketing or chat webhook).",
+      "type": "string"
+    },
+    "thresholds": {
+      "type": "object",
+      "properties": {
+        "caution": { "type": "integer" },
+        "danger": { "type": "integer" }
+      }
+    },
+    "showSafeBanner": { "type": "boolean" },
+    "enableLookups": {
+      "title": "Enable DNS and RDAP lookups",
+      "description": "Sends domain names (never email contents) to dns.google and rdap.org.",
+      "type": "boolean"
+    },
+    "newDomainDays": { "type": "integer" },
+    "extraFreeHosts": { "type": "array", "items": { "type": "string" } },
+    "weights": {
+      "title": "Signal weight overrides",
+      "description": "Map of signal id to points, e.g. {\"free_provider\": 5}.",
+      "type": "object",
+      "additionalProperties": { "type": "integer" }
+    }
+  }
+}

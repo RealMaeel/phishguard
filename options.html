@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PhishGuard settings</title>
+<style>
+  body { font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif; max-width: 860px; margin: 32px auto; padding: 0 16px; color: #1f1f1f; }
+  h1 { font-size: 22px; margin-bottom: 4px; }
+  h2 { font-size: 16px; margin-top: 28px; }
+  textarea { width: 100%; height: 260px; font: 12.5px ui-monospace, Menlo, Consolas, monospace; padding: 10px; border: 1px solid #ccc; border-radius: 8px; }
+  pre { background: #f6f6f6; padding: 10px; border-radius: 8px; overflow: auto; font-size: 12.5px; }
+  button { font: inherit; padding: 6px 12px; border-radius: 6px; border: 1px solid #bbb; background: #fff; cursor: pointer; margin-right: 6px; }
+  button.primary { background: #1f1f1f; color: #fff; border-color: #1f1f1f; }
+  .note { color: #555; }
+  .msg { margin-left: 8px; color: #1d6b2a; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  td, th { text-align: left; padding: 4px 8px; border-bottom: 1px solid #eee; }
+  .managed { background: #fff7e0; border: 1px solid #f0cf6b; padding: 8px 12px; border-radius: 8px; }
+</style>
+</head>
+<body>
+  <h1>PhishGuard settings</h1>
+  <div class="note">Settings pushed by your IT admin (Chrome managed policy) always override local settings.</div>
+
+  <h2>Managed by your organization</h2>
+  <div id="managed" class="managed">Loading…</div>
+
+  <h2>Local settings (for testing)</h2>
+  <div class="note">JSON. Example: <code>{"orgNames":["Acme"],"orgDomains":["acme.com"],"reportEmail":"it@acme.com"}</code></div>
+  <textarea id="local" spellcheck="false"></textarea>
+  <div style="margin-top:8px">
+    <button class="primary" id="save">Save</button>
+    <button id="clear">Clear lookup cache and history</button>
+    <span class="msg" id="msg"></span>
+  </div>
+
+  <h2>Effective settings</h2>
+  <pre id="effective"></pre>
+
+  <h2>Recent activity on this computer</h2>
+  <div class="note">Stored only in this browser. No email contents are kept.</div>
+  <table><thead><tr><th>Time</th><th>Type</th><th>Action</th><th>Level</th><th>Score</th><th>Where</th></tr></thead><tbody id="log"></tbody></table>
+
+  <script src="options.js"></script>
+</body>
+</html>

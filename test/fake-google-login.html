@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Sign in - Google Accounts</title>
+<style>
+  body { font-family: Arial, sans-serif; background: #f1f3f4; display: flex; justify-content: center; padding-top: 80px; }
+  .box { background: #fff; padding: 40px; border-radius: 8px; width: 360px; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+  input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+  button { background: #1a73e8; color: #fff; border: 0; padding: 10px 20px; border-radius: 4px; }
+  .banner { background: #fff3cd; padding: 8px; font-size: 12px; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+  <div class="box">
+    <div class="banner">PHISHGUARD TEST PAGE. Harmless: nothing you type is sent anywhere.</div>
+    <h1>Sign in</h1>
+    <p>to continue to Gmail and view the document Acme shared with you</p>
+    <!-- action points to another domain so the "form posts elsewhere" signal fires; submit is blocked. -->
+    <form action="https://collector.example.invalid/submit" onsubmit="event.preventDefault(); alert('Test page: nothing was sent.');">
+      <input type="email" placeholder="Email or phone">
+      <input type="password" placeholder="Enter your password">
+      <button type="submit">Next</button>
+    </form>
+  </div>
+</body>
+</html>

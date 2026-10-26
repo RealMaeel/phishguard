@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "PhishGuard",
+  "version": "0.1.0",
+  "description": "Flags spoofed emails in Gmail and fake sign-in pages, and shows users how to spot them next time.",
+  "permissions": ["storage"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["shared/domain.js", "content/ui.js", "content/gmail.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "exclude_matches": ["https://mail.google.com/*"],
+      "js": ["content/ui.js", "content/page.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "storage": { "managed_schema": "managed_schema.json" },
+  "options_ui": { "page": "options.html", "open_in_tab": true }
+}
